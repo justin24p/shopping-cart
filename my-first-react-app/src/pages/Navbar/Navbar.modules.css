@@ -1,0 +1,36 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 70px 30px 70px;
+    color: white;
+}
+.img {
+    width: 50px;
+    height: 50px;
+}
+.img img {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+.searchbar input {
+    background-color: white;
+    font-size: 2rem;
+    border-radius: 10px;
+    border: none;
+}
+ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.navbar button {
+    border-radius: 50px;
+    border: none;
+    background-color: white;
+    color: black;
+    font-size: 1.2rem;
+    padding: 10px 20px 10px 20px;
+}

@@ -1,15 +1,20 @@
 import "./Navbar.modules.css";
-import cart from "./image.png";
+import { Link } from "react-router-dom";
+
 export default function Navbar() {
     return (
         <nav className="navbar">
-            <h2>Game Store</h2>
+            <Link to="/">
+                <h2>Game Store</h2>
+            </Link>
             <ul>
-                <li>hello</li>
-                <li>hello</li>
-                <li>hello</li>
-                <li>hello</li>
-                <button>Cart</button>
+                <li>About</li>
+                <li>Store</li>
+                <li>Games</li>
+                <li>Learn More</li>
+                <Link to="cart">
+                    <button>Cart</button>
+                </Link>
             </ul>
         </nav>
     );

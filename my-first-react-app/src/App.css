@@ -17,10 +17,8 @@
     height: 100%;
 }
 .homepage {
-    padding-top: 100px;
-    justify-content: center;
     display: flex;
-    padding-bottom: 100px;
+    justify-content: center;
     color: white;
 }
 .homepage h1 {
@@ -29,7 +27,8 @@
 }
 .homepage input {
     border: 1px solid white;
-    font-size: 3rem;
+    padding: 20px;
+    font-size: 1rem;
     border-radius: 50px;
 }
 .homepage button {

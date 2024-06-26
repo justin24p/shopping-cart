@@ -23,9 +23,9 @@
 ul {
     list-style: none;
     display: flex;
+    align-items: center;
     gap: 20px;
 }
-
 .navbar button {
     border-radius: 50px;
     border: none;

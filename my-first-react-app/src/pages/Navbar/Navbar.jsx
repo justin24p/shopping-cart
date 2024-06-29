@@ -1,7 +1,7 @@
 import "./Navbar.modules.css";
 import { Link } from "react-router-dom";
 
-export default function Navbar() {
+export default function Navbar({ toggleDropDown }) {
     return (
         <nav className="navbar">
             <Link to="/">
@@ -12,9 +12,7 @@ export default function Navbar() {
                 <li>Store</li>
                 <li>Games</li>
                 <li>Learn More</li>
-                <Link to="cart">
-                    <button>Cart</button>
-                </Link>
+                <button onClick={toggleDropDown}>Cart</button>
             </ul>
         </nav>
     );

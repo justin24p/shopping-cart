@@ -7,112 +7,26 @@
     height: 100vh;
     background-color: black;
 }
-.right {
-    width: 500px;
-    height: 550px;
-}
-.right img {
-    position: relative;
-    width: 100%;
-    height: 100%;
-}
-.homepage {
-    display: flex;
-    justify-content: center;
-    color: white;
-}
-.homepage h1 {
-    font-size: 5rem;
-    font-weight: 800;
-}
-.homepage input {
-    border: 1px solid white;
-    padding: 20px;
-    font-size: 1rem;
-    border-radius: 50px;
-}
-.homepage button {
-    border-radius: 50px;
-    padding: 10px 20px 10px 20px;
-    font-size: 1.2rem;
-    border: none;
-    transition: transform 0.3s ease-in-out; /* Add this line for transition */
-}
-.homepage button:hover {
-    transform: scale(1.1); /* Add this line for grow effect */
-}
-.button-container button:first-child {
-    background-color: white;
-    color: black;
-}
-.button-container button:last-child {
-    border: 1px solid white;
-    color: white;
-    background-color: black;
-}
-.left {
+.dropdown {
+    z-index: 2;
+    height: 100vh;
+    width: 350px;
+    background-color: rgb(39, 36, 36);
+    position: absolute;
+    top: 0px;
+    right: 0px;
     display: flex;
     flex-direction: column;
-    gap: 60px;
-    margin-right: 70px;
-    width: 500px;
+    justify-content: space-between;
 }
-.button-container {
+.dropdown-top {
+    padding: 30px;
     display: flex;
-    gap: 30px;
+    justify-content: space-between;
 }
-
-@keyframes slide {
-    from {
-        transform: translateX(0);
-    }
-    to {
-        transform: translateX(-50%);
-    }
+.dropdown-top h2 {
+    font-weight: 800;
 }
-.logos {
-    overflow: hidden;
-    padding: 20px 0;
-    background: rgb(255, 162, 0);
-    white-space: nowrap;
-    position: relative;
-    text-align: center;
-}
-
-.logos:before,
-.logos:after {
-    position: absolute;
-    top: 0;
-    width: 250px;
-    height: 100%;
-    content: "";
-    z-index: 2;
-}
-
-.logos:before {
-    left: 0;
-    background: linear-gradient(
-        to left,
-        rgba(255, 255, 255, 0),
-        rgb(255, 162, 0)
-    );
-}
-
-.logos:after {
-    right: 0;
-    background: linear-gradient(
-        to right,
-        rgba(255, 255, 255, 0),
-        rgb(255, 162, 0)
-    );
-}
-
-.logos-slide {
-    display: inline-block;
-    animation: 12s slide infinite linear;
-}
-
-.logos-slide img {
-    height: 40px; /* Reduced height */
-    margin: 0 40px; /* Reduced margin */
+#total {
+    padding: 30px;
 }

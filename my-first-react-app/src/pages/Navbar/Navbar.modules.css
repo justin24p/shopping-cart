@@ -27,10 +27,15 @@ ul {
     gap: 20px;
 }
 .navbar button {
+    cursor: pointer;
     border-radius: 50px;
     border: none;
     background-color: white;
     color: black;
     font-size: 1.2rem;
     padding: 10px 20px 10px 20px;
+}
+.navbar a {
+    text-decoration: none;
+    color: white;
 }

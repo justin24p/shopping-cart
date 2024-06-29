@@ -1,9 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
-import Library from "./pages/library.jsx";
+import Library from "./pages/Libra/library.jsx";
 import Cart from "./pages/cart.jsx";
-import Homepage from "./pages/Homepage.jsx";
+import Homepage from "./pages/Homepage/Homepage.jsx";
 
 import "./index.css";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";

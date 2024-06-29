@@ -26,10 +26,10 @@ export default function Homepage() {
             fetch(url)
                 .then((response) => response.json())
                 .then((data) => {
-                    console.log(data);
                     const simpleResults = data.results.map((game) => ({
                         name: game.name,
                         src: game.background_image,
+                        id: game.id,
                     }));
                     const slicedResults = simpleResults.slice(0, 3);
                     setResults(slicedResults);
@@ -43,7 +43,7 @@ export default function Homepage() {
     useEffect(() => {
         function handleClickOutside(event) {
             if (focusRef.current && !focusRef.current.contains(event.target)) {
-                setFocus(false);
+                console.log("hello");
             }
         }
         if (focus) {
@@ -95,15 +95,16 @@ export default function Homepage() {
                         onChange={handleInput}
                         placeholder="Search Games..."
                     />
-                    // if input is focused render below else dont // we can use
-                    state for that
+
                     {focus && (
                         <div className="results">
                             {results.map((game) => (
-                                <div className="game">
-                                    <p>{game.name}</p>
-                                    <img src={game.src} />
-                                </div>
+                                <Link key={game.id} to={`/game/${game.id}`}>
+                                    <div className="game">
+                                        <p>{game.name}</p>
+                                        <img src={game.src} alt={game.name} />
+                                    </div>
+                                </Link>
                             ))}
                         </div>
                     )}

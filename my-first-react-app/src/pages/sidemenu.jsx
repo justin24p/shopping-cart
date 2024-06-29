@@ -1,9 +1,10 @@
 import React from "react";
-const DropDown = React.forwardRef((props, ref) => {
+const DropDown = React.forwardRef(({ cartItems }, ref) => {
+    const cartCount = cartItems.length;
     return (
         <div className="dropdown" ref={ref}>
             <div className="dropdown-top">
-                <h2>0 Games</h2>
+                <h2>{cartCount} Games</h2>
                 <p>clear</p>
             </div>
             <p id="total">Total: $0</p>

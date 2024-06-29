@@ -2,16 +2,22 @@ import "./App.css";
 import React from "react";
 import Navbar from "./pages/Navbar/Navbar";
 import { Outlet } from "react-router-dom";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, createContext } from "react";
 import DropDown from "./pages/sidemenu";
 
+// now that the context is declared wrap the outlet context provider around outlet
+// as theres no need to wrap around navbar or drowndown as we can pass it directly as a prop
+//
+export const ShopContext = createContext(null);
+
 export default function App() {
-    const [cart, toggleCart] = useState(false);
+    const [cartMenu, togglecartMenu] = useState(false);
+    const [cartItems, setCartItems] = useState(["wheat", "apples", "oranges"]);
     const dropDownRef = useRef(null);
 
     const toggleDropDown = () => {
         console.log("toggling!");
-        toggleCart(!cart);
+        togglecartMenu(!cartMenu);
     };
 
     useEffect(() => {
@@ -21,12 +27,12 @@ export default function App() {
                 dropDownRef.current &&
                 !dropDownRef.current.contains(event.target)
             ) {
-                toggleCart(false);
+                togglecartMenu(false);
             }
         }
 
         // Add event listener when dropdown is open
-        if (cart) {
+        if (cartMenu) {
             document.addEventListener("mousedown", handleClickOutside);
         } else {
             document.removeEventListener("mousedown", handleClickOutside);
@@ -36,15 +42,17 @@ export default function App() {
         return () => {
             document.removeEventListener("mousedown", handleClickOutside);
         };
-    }, [cart]);
+    }, [cartMenu]);
 
     return (
         <div className="app">
             <Navbar toggleDropDown={toggleDropDown}></Navbar>
-            <Outlet></Outlet>
-            {cart && <DropDown ref={dropDownRef}></DropDown>}
+            <ShopContext.Provider value={{ cartItems, setCartItems }}>
+                <Outlet></Outlet>
+            </ShopContext.Provider>
+            {cartMenu && (
+                <DropDown cartItems={cartItems} ref={dropDownRef}></DropDown>
+            )}
         </div>
     );
 }
-// useref is a react hook that can store multiple value types similar to state except it doesnt
-// trigger re renders

@@ -4,6 +4,7 @@ import App from "./App.jsx";
 import Library from "./pages/Libra/library.jsx";
 import Cart from "./pages/cart.jsx";
 import Homepage from "./pages/Homepage/Homepage.jsx";
+import Game from "./pages/Game/game.jsx";
 
 import "./index.css";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
@@ -20,6 +21,7 @@ const router = createBrowserRouter([
             { path: "/", element: <Homepage></Homepage> },
             { path: "/library", element: <Library></Library> },
             { path: "/cart", element: <Cart></Cart> },
+            { path: "/game/:gameId", element: <Game></Game> },
         ],
     },
 ]);

@@ -12,7 +12,18 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
-* {
-    margin: 0px;
-    padding: 0px;
+
+/* Reset default margin and padding */
+body,
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+/* Ensure the root element uses full height */
+#root {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }

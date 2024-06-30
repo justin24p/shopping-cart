@@ -28,7 +28,11 @@ export default function Game() {
     }, [gameId]);
 
     if (!game) {
-        return <div>Loading...</div>;
+        return (
+            <div className="loading-container">
+                <div className="spinner"></div>
+            </div>
+        );
     }
 
     return (
@@ -38,7 +42,7 @@ export default function Game() {
                 <h2>{game.name}</h2>
             </div>
             <div className="game">
-                <img src={game.background_image} alt={game.name} />
+                <div className="img-container"></div>
                 <div className="right-side">
                     <div className="text">
                         <p>{game.description_raw}</p>

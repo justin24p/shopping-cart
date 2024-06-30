@@ -42,8 +42,11 @@ export default function Homepage() {
     // use effect for toggling search bar of if we click off
     useEffect(() => {
         function handleClickOutside(event) {
-            if (focusRef.current && !focusRef.current.contains(event.target)) {
-                console.log("hello");
+            if (
+                !event.target.closest(".results") &&
+                !event.target.closest('input[type="text"]')
+            ) {
+                setFocus(false);
             }
         }
         if (focus) {

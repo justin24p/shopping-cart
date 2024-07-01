@@ -12,8 +12,10 @@ export default function Card({ title, img }) {
     return (
         <div className="card">
             <img src={img} alt="" />
-            <p>Add to cart +</p>
-            <h2 className="title">{title}</h2>
+            <div className="card-text">
+                <p>Add to cart +</p>
+                <h2 className="title">{title}</h2>
+            </div>
         </div>
     );
 }

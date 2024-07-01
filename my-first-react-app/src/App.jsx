@@ -4,15 +4,15 @@ import Navbar from "./pages/Navbar/Navbar";
 import { Outlet } from "react-router-dom";
 import { useState, useEffect, useRef, createContext } from "react";
 import DropDown from "./pages/sidemenu";
+import video from "./assets/valorant.mp4";
+import Homepage from "./pages/Homepage/Homepage";
 
-// now that the context is declared wrap the outlet context provider around outlet
-// as theres no need to wrap around navbar or drowndown as we can pass it directly as a prop
-//
 export const ShopContext = createContext(null);
 
 export default function App() {
     const [cartMenu, togglecartMenu] = useState(false);
     const [cartItems, setCartItems] = useState(["wheat", "apples", "oranges"]);
+
     const dropDownRef = useRef(null);
 
     const toggleDropDown = () => {
@@ -50,9 +50,11 @@ export default function App() {
             <ShopContext.Provider value={{ cartItems, setCartItems }}>
                 <Outlet></Outlet>
             </ShopContext.Provider>
-            {cartMenu && (
-                <DropDown cartItems={cartItems} ref={dropDownRef}></DropDown>
-            )}
+            <DropDown
+                cartItems={cartItems}
+                ref={dropDownRef}
+                show={cartMenu}
+            ></DropDown>
         </div>
     );
 }

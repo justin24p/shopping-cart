@@ -4,6 +4,10 @@
     align-items: center;
     padding: 30px 70px 30px 70px;
     color: white;
+    position: relative;
+}
+.searchbar {
+    position: relative;
 }
 .img {
     width: 50px;
@@ -38,4 +42,50 @@ ul {
 .navbar a {
     text-decoration: none;
     color: white;
+}
+.navbar input {
+    width: 300px;
+    border: none;
+    border-radius: 10px;
+    padding: 7px 20px 7px 20px;
+    font-size: 1rem;
+    background-color: white;
+    color: black;
+    transition: width 0.3s ease-in-out;
+    outline: none;
+}
+.navbar input:focus {
+    width: 400px;
+}
+
+.results {
+    border-radius: 10px;
+    width: 100%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    position: absolute;
+    top: 100%;
+    z-index: 1;
+    margin-top: 20px;
+}
+.game {
+    margin: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+.results p {
+    color: black;
+}
+.results img {
+    border-radius: 10px;
+    width: 120px;
+    height: 100px;
+}
+.navbar h2 {
+    transition: transform 0.3s easeH;
+}
+.navbar h2:hover {
+    transform: scale(1.05);
 }

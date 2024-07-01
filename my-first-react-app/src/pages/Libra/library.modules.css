@@ -39,10 +39,11 @@
     flex-direction: column;
     margin-left: 20px;
     margin-right: 30px;
-    margin-top: 30px;
+    margin-top: 10px;
 }
 
 .card-container {
+    padding-left: 20px;
     display: flex;
     margin: auto;
     flex-wrap: wrap;
@@ -87,4 +88,8 @@
 .card-container a {
     color: white;
     text-decoration: none;
+}
+.main-content {
+    overflow-y: auto;
+    max-height: calc(100vh - 150px);
 }

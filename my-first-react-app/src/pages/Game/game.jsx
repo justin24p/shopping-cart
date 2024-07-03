@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import "./game.modules.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons/faArrowLeft";
 
 export default function Game() {
     const { gameId } = useParams();
@@ -38,16 +40,30 @@ export default function Game() {
     return (
         <div className="game-container">
             <div className="nav">
-                <div>Game</div>
+                <Link to="/library">
+                    <h3>
+                        <FontAwesomeIcon
+                            className="back-icon"
+                            icon={faArrowLeft}
+                        ></FontAwesomeIcon>
+                        Go back
+                    </h3>
+                </Link>
                 <h2>{game.name}</h2>
             </div>
-            <div className="game">
-                <div className="img-container"></div>
+            <div className="game-sec">
+                <div className="img-container">
+                    <img src={game.background_image} alt="" />
+                </div>
                 <div className="right-side">
                     <div className="text">
+                        <h3>Description</h3>
                         <p>{game.description_raw}</p>
                     </div>
-                    <div className="cart"></div>
+                    <div className="bottom-text">
+                        <p>$20.00</p>
+                        <p>Add to cart +</p>
+                    </div>
                 </div>
             </div>
         </div>

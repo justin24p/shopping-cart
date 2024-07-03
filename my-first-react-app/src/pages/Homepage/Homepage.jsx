@@ -7,7 +7,9 @@ import react from "../../assets/react.svg";
 import vite from "../../assets/vite.svg";
 import vercel from "../../assets/vercel.svg";
 import npm from "../../assets/npm.svg";
-
+import { faBook, faNetworkWired } from "@fortawesome/free-solid-svg-icons";
+import { faGithub } from "@fortawesome/free-brands-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 export default function Homepage() {
     return (
         <section className="homepage">
@@ -35,13 +37,24 @@ export default function Homepage() {
 
                 <div className="button-container">
                     <a href=" https://github.com/justin24p">
-                        <button>Github</button>
+                        <button>
+                            <FontAwesomeIcon icon={faGithub}></FontAwesomeIcon>
+                            Github
+                        </button>
                     </a>
                     <Link to="library">
-                        <button>Go to Library</button>
+                        <button>
+                            <FontAwesomeIcon icon={faBook}></FontAwesomeIcon>
+                            Go to Library
+                        </button>
                     </Link>
                     <a href="https://rawg.io/apidocs">
-                        <button>Rawg API</button>
+                        <button>
+                            <FontAwesomeIcon
+                                icon={faNetworkWired}
+                            ></FontAwesomeIcon>
+                            Rawg API
+                        </button>
                     </a>
                 </div>
             </div>

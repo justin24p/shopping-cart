@@ -343,13 +343,12 @@ export default function Library() {
                 <div className="card-container">
                     <h1>{getTitle()}</h1>
                     {results.map((game) => (
-                        <Link key={game.id} to={`/game/${game.id}`}>
-                            <Card
-                                key={game.title}
-                                title={game.title}
-                                img={game.img}
-                            ></Card>
-                        </Link>
+                        <Card
+                            gameid={game.id}
+                            key={game.title}
+                            title={game.title}
+                            img={game.img}
+                        ></Card>
                     ))}
                 </div>
             </div>

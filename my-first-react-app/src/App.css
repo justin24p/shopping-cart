@@ -22,18 +22,20 @@ video {
     z-index: 2;
     height: 100vh;
     width: 350px;
-    background-color: rgb(39, 36, 36);
+    background-color: rgb(32, 32, 32);
     position: absolute;
     top: 0px;
     right: 0px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    align-items: center;
 }
 .dropdown-top {
     padding: 30px;
     display: flex;
     justify-content: space-between;
+    width: 300px;
 }
 .dropdown-top h2 {
     font-weight: 800;
@@ -52,4 +54,53 @@ video {
 .dropdown.show {
     opacity: 1;
     transform: translateX(0);
+}
+/* route transitions */
+.fade-enter {
+    opacity: 0;
+}
+.fade-enter-active {
+    opacity: 1;
+    transition: opacity 300ms ease-in;
+}
+.fade-exit {
+    opacity: 1;
+}
+.fade-exit-active {
+    opacity: 0;
+    transition: opacity 300ms ease-in;
+}
+.cart {
+    flex: 1;
+    width: 100%;
+    max-height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+    gap: 20px;
+}
+.cart::-webkit-scrollbar {
+    display: none;
+}
+.cartmenu-cont {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    height: 140px;
+    width: 300px;
+    background-color: rgb(38, 38, 38);
+    border-radius: 15px;
+    gap: 20px;
+    flex-shrink: 0;
+}
+.cartmenu-cont p {
+    width: 140px;
+}
+.cartmenu-cont img {
+    border-radius: 15px;
+    width: 130px;
+    height: 100px;
+    object-fit: cover;
 }

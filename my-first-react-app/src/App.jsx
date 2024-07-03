@@ -1,20 +1,31 @@
 import "./App.css";
 import React from "react";
 import Navbar from "./pages/Navbar/Navbar";
-import { Outlet } from "react-router-dom";
 import { useState, useEffect, useRef, createContext } from "react";
 import DropDown from "./pages/sidemenu";
-import video from "./assets/valorant.mp4";
-import Homepage from "./pages/Homepage/Homepage";
+import { Outlet } from "react-router-dom";
 
 export const ShopContext = createContext(null);
 
 export default function App() {
     const [cartMenu, togglecartMenu] = useState(false);
-    const [cartItems, setCartItems] = useState(["wheat", "apples", "oranges"]);
+    const [cartItems, setCartItems] = useState([]);
+
+    // determines if in cart
+    function inCart(gameId) {
+        return cartItems.find((item) => item.gameId === gameId);
+    }
+
+    function addToCart(gameId, img, title) {
+        if (cartItems.find((item) => item.gameId === gameId)) {
+            return;
+        }
+        const newCartItem = { gameId: gameId, img: img, title: title };
+        setCartItems((prevCartItems) => [...prevCartItems, newCartItem]);
+    }
+    const clearCartItems = () => setCartItems([]);
 
     const dropDownRef = useRef(null);
-
     const toggleDropDown = () => {
         console.log("toggling!");
         togglecartMenu(!cartMenu);
@@ -47,12 +58,13 @@ export default function App() {
     return (
         <div className="app">
             <Navbar toggleDropDown={toggleDropDown}></Navbar>
-            <ShopContext.Provider value={{ cartItems, setCartItems }}>
+            <ShopContext.Provider value={{ inCart, addToCart, cartItems }}>
                 <Outlet></Outlet>
             </ShopContext.Provider>
             <DropDown
                 cartItems={cartItems}
                 ref={dropDownRef}
+                clearCartItems={clearCartItems}
                 show={cartMenu}
             ></DropDown>
         </div>

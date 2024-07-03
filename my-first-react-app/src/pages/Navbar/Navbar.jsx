@@ -2,7 +2,8 @@ import { faL } from "@fortawesome/free-solid-svg-icons";
 import "./Navbar.modules.css";
 import { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
-
+import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 export default function Navbar({ toggleDropDown }) {
     const [value, setValue] = useState("");
     const [results, setResults] = useState([]);
@@ -84,7 +85,10 @@ export default function Navbar({ toggleDropDown }) {
                 )}
             </div>
             <ul>
-                <button onClick={toggleDropDown}>Cart</button>
+                <button onClick={toggleDropDown}>
+                    <FontAwesomeIcon icon={faCartShopping}></FontAwesomeIcon>
+                    Cart
+                </button>
             </ul>
         </nav>
     );

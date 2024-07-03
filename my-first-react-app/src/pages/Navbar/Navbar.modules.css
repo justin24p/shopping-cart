@@ -38,6 +38,12 @@ ul {
     color: black;
     font-size: 1.2rem;
     padding: 10px 20px 10px 20px;
+    display: flex;
+    gap: 5px;
+    transition: transform 0.3s ease;
+}
+.navbar button:hover {
+    transform: scale(1.1);
 }
 .navbar a {
     text-decoration: none;
@@ -84,8 +90,8 @@ ul {
     height: 100px;
 }
 .navbar h2 {
-    transition: transform 0.3s easeH;
+    transition: transform 0.3s ease;
 }
 .navbar h2:hover {
-    transform: scale(1.05);
+    transform: scale(1.1);
 }

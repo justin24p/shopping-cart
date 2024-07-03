@@ -1,19 +1,25 @@
 import "./card.modules.css";
+import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { ShopContext } from "../../App";
 
-import {
-    faWindows,
-    faXbox,
-    faPlaystation,
-    faApple,
-} from "@fortawesome/free-brands-svg-icons";
+export default function Card({ title, img, gameid }) {
+    const { inCart, addToCart } = useContext(ShopContext);
+    const hello = inCart;
 
-export default function Card({ title, img }) {
-    const imageArray = [faWindows, faXbox, faPlaystation, faApple];
     return (
         <div className="card">
-            <img src={img} alt="" />
+            <Link key={gameid} to={`/game/${gameid}`}>
+                <img src={img} alt="" />
+            </Link>
             <div className="card-text">
-                <p>Add to cart +</p>
+                {inCart(gameid) ? (
+                    <p className="added">Added ✔</p>
+                ) : (
+                    <p onClick={() => addToCart(gameid, img, title)}>
+                        add to cart +
+                    </p>
+                )}
                 <h2 className="title">{title}</h2>
             </div>
         </div>

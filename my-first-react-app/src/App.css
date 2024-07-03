@@ -88,7 +88,8 @@ video {
     position: relative;
     justify-content: center;
     align-items: center;
-    height: 140px;
+    /*keep the height and width the same*/
+    height: 143px;
     width: 300px;
     background-color: rgb(38, 38, 38);
     border-radius: 15px;
@@ -96,29 +97,41 @@ video {
     flex-shrink: 0;
 }
 
-.cartmenu-cont p {
-    width: 140px;
-}
-/* additions*/
-
 .cartmenu-cont {
     flex-direction: column;
 }
 
 .cartmenu-cont img {
     border-radius: 15px;
-    width: 130px;
     height: 100px;
+    width: 140px;
     object-fit: cover;
+    flex-shrink: 0;
 }
 .cart-bottom {
     display: flex;
+    justify-content: space-between;
     align-items: center;
 }
 .trash-icon {
     position: absolute;
-    top: 10px; /* Adjust as needed for positioning */
-    right: 10px; /* Adjust as needed for positioning */
+    top: 10px;
+    right: 10px;
     color: white;
     cursor: pointer;
+}
+.cartmenu-cont {
+    padding: 10px;
+    flex-direction: row; /* Changed to row */
+}
+
+.cart-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px; /* Add gap to maintain spacing between elements */
+    flex-grow: 1;
+}
+.cart-bottom p {
+    margin: 0; /* Remove default margin */
+    flex-shrink: 0; /* Prevents the title from shrinking */
 }

@@ -1,12 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import "./game.modules.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons/faArrowLeft";
+import { ShopContext } from "../../App";
 
 export default function Game() {
     const { gameId } = useParams();
     const [game, setGame] = useState(null);
+    const { inCart, addToCart } = useContext(ShopContext);
+    const intGameId = parseInt(gameId);
 
     useEffect(() => {
         // Fetch game details based on gameId
@@ -19,7 +22,6 @@ export default function Game() {
                     throw new Error("Failed to fetch game details");
                 }
                 const data = await response.json();
-                console.log(data);
                 setGame(data);
             } catch (error) {
                 console.error("Error fetching game details:", error);
@@ -62,7 +64,21 @@ export default function Game() {
                     </div>
                     <div className="bottom-text">
                         <p>$20.00</p>
-                        <p>Add to cart +</p>
+                        {inCart(intGameId) ? (
+                            <p className="added">Added ✔</p>
+                        ) : (
+                            <p
+                                onClick={() =>
+                                    addToCart(
+                                        intGameId,
+                                        game.background_image,
+                                        game.name,
+                                    )
+                                }
+                            >
+                                add to cart +
+                            </p>
+                        )}
                     </div>
                 </div>
             </div>

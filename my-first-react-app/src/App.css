@@ -95,12 +95,30 @@ video {
     gap: 20px;
     flex-shrink: 0;
 }
+
 .cartmenu-cont p {
     width: 140px;
 }
+/* additions*/
+
+.cartmenu-cont {
+    flex-direction: column;
+}
+
 .cartmenu-cont img {
     border-radius: 15px;
     width: 130px;
     height: 100px;
     object-fit: cover;
+}
+.cart-bottom {
+    display: flex;
+    align-items: center;
+}
+.trash-icon {
+    position: absolute;
+    top: 10px; /* Adjust as needed for positioning */
+    right: 10px; /* Adjust as needed for positioning */
+    color: white;
+    cursor: pointer;
 }

@@ -1,5 +1,4 @@
 import "./App.css";
-import React from "react";
 import Navbar from "./pages/Navbar/Navbar";
 import { useState, useEffect, useRef, createContext } from "react";
 import DropDown from "./pages/sidemenu";
@@ -10,6 +9,7 @@ export const ShopContext = createContext(null);
 export default function App() {
     const [cartMenu, togglecartMenu] = useState(false);
     const [cartItems, setCartItems] = useState([]);
+    console.log(cartItems);
 
     // determines if in cart
     function inCart(gameId) {
@@ -24,6 +24,13 @@ export default function App() {
         setCartItems((prevCartItems) => [...prevCartItems, newCartItem]);
     }
     const clearCartItems = () => setCartItems([]);
+
+    function clearClickedItem(gameId) {
+        const updatedCartItems = cartItems.filter(
+            (game) => game.gameId !== gameId,
+        );
+        setCartItems(updatedCartItems);
+    }
 
     const dropDownRef = useRef(null);
     const toggleDropDown = () => {
@@ -65,6 +72,7 @@ export default function App() {
                 cartItems={cartItems}
                 ref={dropDownRef}
                 clearCartItems={clearCartItems}
+                clearClickedItem={clearClickedItem}
                 show={cartMenu}
             ></DropDown>
         </div>

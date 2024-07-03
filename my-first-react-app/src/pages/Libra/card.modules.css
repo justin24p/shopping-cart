@@ -2,7 +2,7 @@
     width: 360px;
     height: 300px;
     border-radius: 20px;
-    background-color: rgb(39, 36, 36);
+    background-color: rgb(32, 32, 32);
     transition: transform 0.3s ease;
 }
 .card:hover {

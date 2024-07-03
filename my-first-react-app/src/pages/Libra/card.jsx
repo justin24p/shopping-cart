@@ -5,7 +5,6 @@ import { ShopContext } from "../../App";
 
 export default function Card({ title, img, gameid }) {
     const { inCart, addToCart } = useContext(ShopContext);
-    const hello = inCart;
 
     return (
         <div className="card">

@@ -1,8 +1,9 @@
 import React from "react";
-
+import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "react-router-dom";
 const DropDown = React.forwardRef(
-    ({ cartItems, show, clearCartItems }, ref) => {
-        console.log("show", show);
+    ({ cartItems, show, clearCartItems, clearClickedItem }, ref) => {
         const cartCount = cartItems.length;
         return (
             <div className={`dropdown ${show ? "show" : ""}`} ref={ref}>
@@ -12,9 +13,21 @@ const DropDown = React.forwardRef(
                 </div>
                 <div className="cart">
                     {cartItems.map((game) => (
-                        <div className="cartmenu-cont">
-                            <img src={game.img} alt="" />
-                            <p>{game.title}</p>
+                        <div key={game.gameId} className="cartmenu-cont">
+                            <FontAwesomeIcon
+                                onClick={() => clearClickedItem(game.gameId)}
+                                className="trash-icon"
+                                icon={faTrashCan}
+                            ></FontAwesomeIcon>
+                            <div className="cart-bottom">
+                                <Link
+                                    key={game.gameId}
+                                    to={`/game/${game.gameId}`}
+                                >
+                                    <img src={game.img} alt="" />
+                                </Link>
+                                <p>{game.title}</p>
+                            </div>
                         </div>
                     ))}
                 </div>

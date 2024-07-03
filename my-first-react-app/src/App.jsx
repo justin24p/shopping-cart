@@ -9,19 +9,32 @@ export const ShopContext = createContext(null);
 export default function App() {
     const [cartMenu, togglecartMenu] = useState(false);
     const [cartItems, setCartItems] = useState([]);
-    console.log(cartItems);
-
+    const totalprice = cartItems.reduce((sum, game) => (sum += game.price), 0);
+    console.log(totalprice);
     // determines if in cart
     function inCart(gameId) {
         return cartItems.find((item) => item.gameId === gameId);
     }
 
-    function addToCart(gameId, img, title) {
+    function addToCart(gameId, img, title, price) {
         if (cartItems.find((item) => item.gameId === gameId)) {
             return;
         }
-        const newCartItem = { gameId: gameId, img: img, title: title };
+        const newCartItem = {
+            gameId: gameId,
+            img: img,
+            title: title,
+            price: price,
+        };
         setCartItems((prevCartItems) => [...prevCartItems, newCartItem]);
+    }
+    function derivePriceFromGameId(gameId) {
+        let sum = 0;
+        gameId = String(gameId);
+        for (let i = 0; i < gameId.length; i++) {
+            sum += gameId.charCodeAt(i);
+            return (sum % 50) + 10;
+        }
     }
     const clearCartItems = () => setCartItems([]);
 
@@ -65,7 +78,9 @@ export default function App() {
     return (
         <div className="app">
             <Navbar toggleDropDown={toggleDropDown}></Navbar>
-            <ShopContext.Provider value={{ inCart, addToCart, cartItems }}>
+            <ShopContext.Provider
+                value={{ inCart, addToCart, cartItems, derivePriceFromGameId }}
+            >
                 <Outlet></Outlet>
             </ShopContext.Provider>
             <DropDown
@@ -74,6 +89,7 @@ export default function App() {
                 clearCartItems={clearCartItems}
                 clearClickedItem={clearClickedItem}
                 show={cartMenu}
+                totalprice={totalprice}
             ></DropDown>
         </div>
     );

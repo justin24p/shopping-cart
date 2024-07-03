@@ -4,8 +4,10 @@ import { useContext } from "react";
 import { ShopContext } from "../../App";
 
 export default function Card({ title, img, gameid }) {
-    const { inCart, addToCart } = useContext(ShopContext);
-
+    console.log(typeof gameid);
+    const { inCart, addToCart, derivePriceFromGameId } =
+        useContext(ShopContext);
+    const price = derivePriceFromGameId(gameid);
     return (
         <div className="card">
             <Link key={gameid} to={`/game/${gameid}`}>
@@ -13,11 +15,17 @@ export default function Card({ title, img, gameid }) {
             </Link>
             <div className="card-text">
                 {inCart(gameid) ? (
-                    <p className="added">Added ✔</p>
+                    <div className="mini">
+                        <p className="added">Added ✔</p>
+                        <p>${price}</p>
+                    </div>
                 ) : (
-                    <p onClick={() => addToCart(gameid, img, title)}>
-                        add to cart +
-                    </p>
+                    <div className="mini">
+                        <p onClick={() => addToCart(gameid, img, title, price)}>
+                            add to cart +
+                        </p>
+                        <p>${price}</p>
+                    </div>
                 )}
                 <h2 className="title">{title}</h2>
             </div>

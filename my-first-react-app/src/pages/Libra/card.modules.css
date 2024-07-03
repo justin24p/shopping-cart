@@ -25,3 +25,10 @@ p {
 .added {
     color: turquoise;
 }
+.mini {
+    display: flex;
+    justify-content: space-between;
+}
+.mini p:last-child {
+    padding-right: 10px;
+}

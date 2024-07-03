@@ -3,7 +3,10 @@ import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 const DropDown = React.forwardRef(
-    ({ cartItems, show, clearCartItems, clearClickedItem }, ref) => {
+    (
+        { cartItems, show, clearCartItems, clearClickedItem, totalprice },
+        ref,
+    ) => {
         const cartCount = cartItems.length;
         return (
             <div className={`dropdown ${show ? "show" : ""}`} ref={ref}>
@@ -31,7 +34,7 @@ const DropDown = React.forwardRef(
                         </div>
                     ))}
                 </div>
-                <p id="total">Total: $0</p>
+                <p id="total">Total: ${totalprice}</p>
             </div>
         );
     },

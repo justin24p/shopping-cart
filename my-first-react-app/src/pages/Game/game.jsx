@@ -8,8 +8,11 @@ import { ShopContext } from "../../App";
 export default function Game() {
     const { gameId } = useParams();
     const [game, setGame] = useState(null);
-    const { inCart, addToCart } = useContext(ShopContext);
+    const { inCart, addToCart, derivePriceFromGameId } =
+        useContext(ShopContext);
     const intGameId = parseInt(gameId);
+
+    const price = derivePriceFromGameId(gameId);
 
     useEffect(() => {
         // Fetch game details based on gameId
@@ -63,7 +66,7 @@ export default function Game() {
                         <p>{game.description_raw}</p>
                     </div>
                     <div className="bottom-text">
-                        <p>$20.00</p>
+                        <p>${price}</p>
                         {inCart(intGameId) ? (
                             <p className="added">Added ✔</p>
                         ) : (
@@ -73,6 +76,7 @@ export default function Game() {
                                         intGameId,
                                         game.background_image,
                                         game.name,
+                                        price,
                                     )
                                 }
                             >

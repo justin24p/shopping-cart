@@ -20,7 +20,9 @@ export default function Game() {
             try {
                 const apikey = "59fc59e388264249be02c76b5db71a62";
                 const url = `https://api.rawg.io/api/games/${gameId}?key=${apikey}`;
-                const response = await fetch(url);
+                const response = await fetch(url, {
+                    mode: "cors",
+                });
                 if (!response.ok) {
                     throw new Error("Failed to fetch game details");
                 }

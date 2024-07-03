@@ -81,7 +81,9 @@ export default function Library() {
         const fetchGameDetails = async () => {
             try {
                 const url = constructUrl();
-                const response = await fetch(url);
+                const response = await fetch(url, {
+                    mode: "cors",
+                });
                 if (!response.ok) {
                     throw new Error("Failed to fetch game details");
                 }

@@ -28,15 +28,6 @@ const DropDown = React.forwardRef(
                             <div className="cart-bottom">
                                 <p>{game.title}</p>
                             </div>
-                            {/* <div className="cart-bottom">
-                                <Link
-                                    key={game.gameId}
-                                    to={`/game/${game.gameId}`}
-                                >
-                                    <img src={game.img} alt="" />
-                                </Link>
-                                <p>{game.title}</p>
-                            </div> */}
                         </div>
                     ))}
                 </div>
